@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>БайкалСтрой — Строительная компания в Улан-Удэ</title>
+  <meta name="description" content="БайкалСтрой — современная строительная компания в Улан-Удэ: дома, коммерческие объекты, ремонт и благоустройство под ключ." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header" id="top">
+    <div class="container nav-wrap">
+      <a class="logo" href="#top">
+        <span class="logo-mark">БС</span>
+        <span class="logo-text">БайкалСтрой</span>
+      </a>
+      <button class="menu-btn" aria-label="Открыть меню">☰</button>
+      <nav class="nav">
+        <a href="#services">Услуги</a>
+        <a href="#projects">Проекты</a>
+        <a href="#about">О компании</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+      <a class="phone" href="tel:+73012222222">+7 (3012) 22-22-22</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="badge">10+ лет строим в Бурятии</p>
+          <h1>Современное строительство <span>в Улан-Удэ</span> без стресса</h1>
+          <p class="lead">Проектируем, строим и сдаём объекты точно в срок. От частного дома до коммерческого комплекса — всё под ключ с прозрачной сметой.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Рассчитать стоимость</a>
+            <a class="btn btn-ghost" href="#projects">Смотреть проекты</a>
+          </div>
+          <ul class="metrics">
+            <li><strong>180+</strong><span>объектов сдано</span></li>
+            <li><strong>4.9/5</strong><span>средняя оценка клиентов</span></li>
+            <li><strong>24/7</strong><span>поддержка на всех этапах</span></li>
+          </ul>
+        </div>
+        <div class="hero-card">
+          <h2>Бесплатный выезд инженера</h2>
+          <p>Оставьте заявку — мы свяжемся с вами в течение 15 минут.</p>
+          <form class="contact-form" id="quickForm">
+            <label>
+              Ваше имя
+              <input type="text" name="name" placeholder="Например, Айдар" required>
+            </label>
+            <label>
+              Телефон
+              <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+            </label>
+            <label>
+              Что планируете строить?
+              <select name="type" required>
+                <option value="" selected disabled>Выберите вариант</option>
+                <option>Частный дом</option>
+                <option>Коммерческий объект</option>
+                <option>Ремонт и отделка</option>
+                <option>Благоустройство</option>
+              </select>
+            </label>
+            <button type="submit" class="btn btn-primary w-full">Отправить заявку</button>
+            <p class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <p class="badge">Наши услуги</p>
+          <h2>Полный цикл строительных работ</h2>
+        </div>
+        <div class="cards-grid">
+          <article class="card">
+            <h3>Строительство домов</h3>
+            <p>Кирпич, газобетон, каркасные технологии. Работаем по проекту или создаём его с нуля.</p>
+          </article>
+          <article class="card">
+            <h3>Коммерческие объекты</h3>
+            <p>Офисы, магазины, склады и производственные помещения с соблюдением всех нормативов.</p>
+          </article>
+          <article class="card">
+            <h3>Ремонт и отделка</h3>
+            <p>Современные материалы, авторский надзор и гарантия на работы до 5 лет.</p>
+          </article>
+          <article class="card">
+            <h3>Благоустройство</h3>
+            <p>Фасады, террасы, заборы, парковки и прилегающая территория в едином стиле.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects" id="projects">
+      <div class="container">
+        <div class="section-head">
+          <p class="badge">Портфолио</p>
+          <h2>Недавние проекты в Улан-Удэ и пригороде</h2>
+        </div>
+        <div class="project-grid">
+          <article>
+            <h3>Коттедж 240 м², пос. Сотниково</h3>
+            <p>Полный цикл: фундамент, коробка, инженерия, дизайнерская отделка.</p>
+          </article>
+          <article>
+            <h3>Торговый павильон 600 м², Октябрьский район</h3>
+            <p>Металлокаркас, утепление, фасадные работы и внутренние сети за 5 месяцев.</p>
+          </article>
+          <article>
+            <h3>Спа-комплекс, Верхняя Берёзовка</h3>
+            <p>Реконструкция и благоустройство территории с использованием натурального камня.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="container about-grid">
+        <div>
+          <p class="badge">Почему выбирают нас</p>
+          <h2>Надёжность, прозрачность и внимание к деталям</h2>
+          <p>Мы создаём пространства, в которых удобно жить и работать. На каждом объекте действует внутренний технадзор, а заказчик получает еженедельный фотоотчёт.</p>
+        </div>
+        <ul>
+          <li>Фиксированная смета и поэтапная оплата</li>
+          <li>Собственные бригады и проверенные поставщики</li>
+          <li>Юридическое сопровождение и полный пакет документов</li>
+          <li>Гарантия до 5 лет на ключевые виды работ</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container contact-box">
+        <div>
+          <p class="badge">Связаться с нами</p>
+          <h2>Обсудим ваш проект уже сегодня</h2>
+          <p>г. Улан-Удэ, ул. Борсоева, 15<br>Пн–Сб: 09:00–19:00</p>
+          <a class="phone big" href="tel:+73012222222">+7 (3012) 22-22-22</a>
+        </div>
+        <form class="contact-form" id="mainForm">
+          <label>
+            Имя
+            <input type="text" required>
+          </label>
+          <label>
+            Телефон
+            <input type="tel" required>
+          </label>
+          <label>
+            Комментарий
+            <textarea rows="4" placeholder="Кратко опишите задачу"></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary w-full">Получить консультацию</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-wrap">
+      <p>© 2026 БайкалСтрой. Все права защищены.</p>
+      <a href="#top">Наверх ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
