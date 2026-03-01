@@ -51,16 +51,16 @@
         <aside class="quote-card">
           <h3>Быстрый предварительный расчёт</h3>
           <p>Оставьте заявку, и инженер свяжется с вами в течение 20 минут.</p>
-          <form class="mini-form">
+          <form class="mini-form" novalidate>
             <label>
               Ваше имя
-              <input type="text" placeholder="Например, Алексей" />
+              <input type="text" placeholder="Например, Алексей" name="name" autocomplete="name" required />
             </label>
             <label>
               Телефон
-              <input type="tel" placeholder="+7 (___) ___-__-__" />
+              <input type="tel" placeholder="+7 (___) ___-__-__" name="phone" autocomplete="tel" required />
             </label>
-            <button type="button" class="btn">Отправить заявку</button>
+            <button type="submit" class="btn">Отправить заявку</button>
           </form>
           <small>Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</small>
         </aside>
@@ -128,12 +128,12 @@
         <p><a href="tel:+73012225566">+7 (3012) 22-55-66</a></p>
         <p><a href="mailto:info@baikalstroy.ru">info@baikalstroy.ru</a></p>
       </div>
-      <form class="contact-form">
+      <form class="contact-form" novalidate>
         <h3>Оставить заявку</h3>
-        <input type="text" placeholder="Имя" />
-        <input type="tel" placeholder="Телефон" />
-        <textarea rows="4" placeholder="Опишите ваш проект"></textarea>
-        <button type="button" class="btn">Отправить</button>
+        <input type="text" placeholder="Имя" name="name" autocomplete="name" required />
+        <input type="tel" placeholder="Телефон" name="phone" autocomplete="tel" required />
+        <textarea rows="4" placeholder="Опишите ваш проект" name="project" required></textarea>
+        <button type="submit" class="btn">Отправить</button>
       </form>
     </div>
     <p class="copy">© 2026 БайкалСтрой. Все права защищены.</p>

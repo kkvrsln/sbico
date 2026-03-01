@@ -11,6 +11,10 @@
 }
 
 * { box-sizing: border-box; }
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: "Manrope", system-ui, sans-serif;
@@ -238,4 +242,8 @@ input:focus, textarea:focus {
   .nav.open { display: flex; }
   .burger { display: block; }
   .btn-sm { display: none; }
+}
+
+input:invalid {
+  border-color: #dc2626;
 }
