@@ -25,6 +25,75 @@
       .hidden {
         display: none;
       }
+      body,
+      header,
+      section,
+      footer,
+      div,
+      nav,
+      a,
+      h1,
+      h2,
+      h3,
+      h4,
+      p,
+      span,
+      li,
+      button {
+        transition: background-color 0.45s ease, color 0.45s ease, border-color 0.45s ease;
+      }
+      body.light-theme {
+        background-color: #f8fafc !important;
+        color: #0f172a !important;
+      }
+      body.light-theme .bg-gray-900,
+      body.light-theme .bg-gray-900\/95,
+      body.light-theme .bg-gray-900\/80,
+      body.light-theme .bg-gray-800,
+      body.light-theme .bg-black\/20,
+      body.light-theme .bg-black\/30 {
+        background-color: #f8fafc !important;
+      }
+      body.light-theme .text-white,
+      body.light-theme .text-gray-300,
+      body.light-theme .text-gray-400,
+      body.light-theme .text-gray-500 {
+        color: #0f172a !important;
+      }
+      body.light-theme .border-gray-700,
+      body.light-theme .border-gray-800,
+      body.light-theme .border-gray-900 {
+        border-color: #cbd5e1 !important;
+      }
+      body.light-theme #mobile-menu {
+        background-color: rgba(248, 250, 252, 0.96) !important;
+      }
+      .theme-toggle {
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: 9999px;
+        border: 1px solid rgba(245, 158, 11, 0.65);
+        background: radial-gradient(circle at 30% 30%, rgba(251, 191, 36, 0.28), rgba(17, 24, 39, 0.95));
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #f59e0b;
+        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        transform: translateZ(0);
+      }
+      .theme-toggle:hover {
+        transform: translateY(-1px) scale(1.04);
+        box-shadow: 0 14px 28px rgba(15, 23, 42, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      }
+      body.light-theme .theme-toggle {
+        background: radial-gradient(circle at 30% 30%, rgba(254, 240, 138, 0.55), rgba(248, 250, 252, 0.95));
+      }
+      .logo-ko-on-dark {
+        color: #ffffff !important;
+      }
+      .logo-ko-on-light {
+        color: #0f172a !important;
+      }
     </style>
 </head>
 <body class="bg-gray-900 text-white font-sans antialiased">
@@ -39,7 +108,7 @@
     <header id="main-header" class="sticky top-0 left-0 right-0 z-50 transition-all duration-300 bg-gray-900/80 backdrop-blur-lg shadow-xl">
       <div class="container mx-auto px-6 py-4 flex justify-between items-center">
         <a href="index.html" class="text-2xl font-bold tracking-wider">
-          <span class="text-amber-500">БИ</span><span class="text-white">КО</span>
+          <span class="text-amber-500">БИ</span><span id="header-logo-ko" class="text-white logo-ko-on-dark">КО</span>
         </a>
         <nav class="hidden md:flex items-center space-x-8">
           <a href="index.html#hero" class="text-gray-300 hover:text-amber-400 transition cursor-pointer">Главная</a>
@@ -53,11 +122,17 @@
               Заказать звонок
             </a>
         </div>
-        <!-- Mobile Menu Button -->
-        <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
-            <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
+        <div class="flex items-center gap-3">
+          <button id="theme-toggle" class="theme-toggle" aria-label="Переключить тему">
+            <svg id="theme-icon-moon" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+            <svg id="theme-icon-sun" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25M12 18.75V21M4.72 4.72l1.59 1.59M17.69 17.69l1.59 1.59M3 12h2.25M18.75 12H21M4.72 19.28l1.59-1.59M17.69 6.31l1.59-1.59M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>
+          </button>
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+              <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+              <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -179,6 +254,34 @@
                 });
             }
             handleAuthUI();
+
+            // --- Theme Toggle Logic ---
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIconMoon = document.getElementById('theme-icon-moon');
+            const themeIconSun = document.getElementById('theme-icon-sun');
+            const headerLogoKo = document.getElementById('header-logo-ko');
+            const themeStorageKey = 'siteTheme';
+
+            const setTheme = (theme) => {
+                const isLightTheme = theme === 'light';
+                document.body.classList.toggle('light-theme', isLightTheme);
+                if (themeIconMoon) themeIconMoon.classList.toggle('hidden', isLightTheme);
+                if (themeIconSun) themeIconSun.classList.toggle('hidden', !isLightTheme);
+                if (headerLogoKo) {
+                    headerLogoKo.classList.toggle('logo-ko-on-light', isLightTheme);
+                    headerLogoKo.classList.toggle('logo-ko-on-dark', !isLightTheme);
+                }
+                localStorage.setItem(themeStorageKey, isLightTheme ? 'light' : 'dark');
+            };
+
+            setTheme(localStorage.getItem(themeStorageKey) || 'dark');
+
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    const nextTheme = document.body.classList.contains('light-theme') ? 'dark' : 'light';
+                    setTheme(nextTheme);
+                });
+            }
 
             // --- Mobile Menu Logic ---
             const mobileMenuButton = document.getElementById('mobile-menu-button');
