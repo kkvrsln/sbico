@@ -131,7 +131,28 @@
       body.light-theme #phone::placeholder {
         color: #64748b !important;
       }
-      body.light-theme #mobile-menu-button,
+      body.light-theme #mobile-menu-button {
+        color: #ffffff !important;
+      }
+
+      body.theme-switching,
+      body.theme-switching * {
+        transition-duration: 0.65s !important;
+        transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1) !important;
+      }
+      body.theme-switching #theme-toggle {
+        transform: rotate(180deg) scale(1.06);
+      }
+      body.light-theme #fab-button {
+        background-color: #f59e0b !important;
+        color: #ffffff !important;
+      }
+      body.light-theme #fab-button:hover {
+        background-color: #d97706 !important;
+      }
+      body.light-theme #header-call-button,
+      body.light-theme #mobile-call-button,
+      body.light-theme #send-button,
       body.light-theme #hero a {
         color: #ffffff !important;
       }
@@ -188,7 +209,7 @@
           <a href="#" class="logout-link auth-link hidden text-gray-300 hover:text-amber-400 transition cursor-pointer">Выйти</a>
         </nav>
         <div class="no-auth-link">
-          <a href="#contact" class="hidden md:block bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-4 rounded-lg transition-transform duration-300 hover:scale-105">
+          <a id="header-call-button" href="#contact" class="hidden md:block bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-4 rounded-lg transition-transform duration-300 hover:scale-105">
             Заказать звонок
           </a>
         </div>
@@ -218,7 +239,7 @@
                 <a href="#" class="mobile-menu-link logout-link auth-link hidden text-3xl text-gray-300 hover:text-amber-400 transition">Выйти</a>
             </nav>
             <div class="mt-12 no-auth-link">
-                <a href="#contact" class="mobile-menu-link bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-full transition-transform duration-300 hover:scale-105 text-xl">
+                <a id="mobile-call-button" href="#contact" class="mobile-menu-link bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-full transition-transform duration-300 hover:scale-105 text-xl">
                   Заказать звонок
                 </a>
             </div>
@@ -483,6 +504,7 @@
                                     Отправляя заявку, вы соглашаетесь с политикой обработки персональных данных
                                 </span>
                                 <input
+                                    id="send-button"
                                     type="submit"
                                     value="Отправить"
                                     class="w-full inline-flex items-center justify-center gap-2 px-7 py-3 font-semibold text-white rounded-xl text-base transition-all duration-300 ease-in-out cursor-pointer bg-gradient-to-r from-amber-600 to-amber-500 shadow-lg shadow-amber-500/20 hover:shadow-xl hover:shadow-amber-500/30 hover:-translate-y-1 success:bg-green-600 success:shadow-green-500/20 success:hover:shadow-green-500/30"
@@ -635,11 +657,13 @@
 
           const setTheme = (theme) => {
               const isLightTheme = theme === 'light';
+              document.body.classList.add('theme-switching');
               document.body.classList.toggle('light-theme', isLightTheme);
               if (themeIcon) {
                   themeIcon.textContent = isLightTheme ? '☀' : '☾';
               }
               localStorage.setItem(themeStorageKey, isLightTheme ? 'light' : 'dark');
+              window.setTimeout(() => document.body.classList.remove('theme-switching'), 700);
           };
 
           setTheme(localStorage.getItem(themeStorageKey) || 'dark');
