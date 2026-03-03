@@ -25,6 +25,63 @@
       .hidden {
         display: none;
       }
+      body,
+      header,
+      section,
+      footer,
+      div,
+      nav,
+      a,
+      h1,
+      h2,
+      h3,
+      h4,
+      p,
+      span,
+      li,
+      button {
+        transition: background-color 0.45s ease, color 0.45s ease, border-color 0.45s ease;
+      }
+      body.light-theme {
+        background-color: #f8fafc !important;
+        color: #0f172a !important;
+      }
+      body.light-theme .bg-gray-900,
+      body.light-theme .bg-gray-900\/95,
+      body.light-theme .bg-gray-900\/80,
+      body.light-theme .bg-gray-800,
+      body.light-theme .bg-black\/20,
+      body.light-theme .bg-black\/30 {
+        background-color: #f8fafc !important;
+      }
+      body.light-theme .text-white,
+      body.light-theme .text-gray-300,
+      body.light-theme .text-gray-400,
+      body.light-theme .text-gray-500 {
+        color: #0f172a !important;
+      }
+      body.light-theme .border-gray-700,
+      body.light-theme .border-gray-800,
+      body.light-theme .border-gray-900 {
+        border-color: #cbd5e1 !important;
+      }
+      body.light-theme #mobile-menu {
+        background-color: rgba(248, 250, 252, 0.96) !important;
+      }
+      .theme-toggle {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 9999px;
+        border: 1px solid rgba(245, 158, 11, 0.55);
+        background-color: rgba(17, 24, 39, 0.7);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #f59e0b;
+      }
+      body.light-theme .theme-toggle {
+        background-color: rgba(248, 250, 252, 0.95);
+      }
     </style>
 </head>
 <body class="bg-gray-900 text-white font-sans antialiased">
@@ -53,11 +110,16 @@
               Заказать звонок
             </a>
         </div>
-        <!-- Mobile Menu Button -->
-        <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
-            <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
+        <div class="flex items-center gap-3">
+          <button id="theme-toggle" class="theme-toggle" aria-label="Переключить тему">
+            <span id="theme-icon" class="text-lg leading-none">☾</span>
+          </button>
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+              <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+              <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -179,6 +241,29 @@
                 });
             }
             handleAuthUI();
+
+            // --- Theme Toggle Logic ---
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const themeStorageKey = 'siteTheme';
+
+            const setTheme = (theme) => {
+                const isLightTheme = theme === 'light';
+                document.body.classList.toggle('light-theme', isLightTheme);
+                if (themeIcon) {
+                    themeIcon.textContent = isLightTheme ? '☀' : '☾';
+                }
+                localStorage.setItem(themeStorageKey, isLightTheme ? 'light' : 'dark');
+            };
+
+            setTheme(localStorage.getItem(themeStorageKey) || 'dark');
+
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    const nextTheme = document.body.classList.contains('light-theme') ? 'dark' : 'light';
+                    setTheme(nextTheme);
+                });
+            }
 
             // --- Mobile Menu Logic ---
             const mobileMenuButton = document.getElementById('mobile-menu-button');
