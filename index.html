@@ -78,18 +78,46 @@
         background-color: rgba(248, 250, 252, 0.96) !important;
       }
       .theme-toggle {
-        width: 2.5rem;
-        height: 2.5rem;
+        position: relative;
+        width: 2.75rem;
+        height: 2.75rem;
         border-radius: 9999px;
-        border: 1px solid rgba(245, 158, 11, 0.55);
-        background-color: rgba(17, 24, 39, 0.7);
+        border: 1px solid rgba(245, 158, 11, 0.6);
+        background: radial-gradient(circle at 30% 30%, rgba(251, 191, 36, 0.2), rgba(17, 24, 39, 0.9));
         display: inline-flex;
         align-items: center;
         justify-content: center;
         color: #f59e0b;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+        transform: translateZ(0);
+      }
+      .theme-toggle:hover {
+        transform: translateY(-1px) scale(1.03);
+        box-shadow: 0 10px 22px rgba(245, 158, 11, 0.28);
+      }
+      .theme-toggle:active {
+        transform: scale(0.97);
+      }
+      #theme-icon {
+        font-size: 1.05rem;
+        font-weight: 700;
+        line-height: 1;
+      }
+      #main-header .logo-ko {
+        color: #ffffff !important;
+        transition: color 0.35s ease;
+      }
+      body.light-theme #main-header.header-solid .logo-ko {
+        color: #0f172a !important;
+      }
+      body.light-theme .text-gray-300,
+      body.light-theme .text-gray-400 {
+        color: #1e293b !important;
       }
       body.light-theme .theme-toggle {
-        background-color: rgba(248, 250, 252, 0.95);
+        background: radial-gradient(circle at 30% 30%, rgba(245, 158, 11, 0.32), rgba(255, 255, 255, 0.96));
+        border-color: rgba(217, 119, 6, 0.5);
+        box-shadow: 0 10px 20px rgba(217, 119, 6, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.7);
       }
     </style>
     <link rel="stylesheet" href="/index.css">
@@ -120,7 +148,7 @@
     <header id="main-header" class="fixed top-4 left-4 right-4 md:top-0 md:left-0 md:right-0 z-50 transition-all duration-300 bg-transparent rounded-xl md:rounded-none">
       <div class="container mx-auto px-6 py-4 flex justify-between items-center">
         <div class="text-2xl font-bold tracking-wider">
-          <span class="text-amber-500">БИ</span><span class="text-white">КО</span>
+          <span class="text-amber-500">БИ</span><span class="text-white logo-ko">КО</span>
         </div>
         <nav class="hidden md:flex items-center space-x-8">
           <a href="#hero" class="text-gray-300 hover:text-amber-400 transition cursor-pointer">Главная</a>
@@ -600,10 +628,10 @@
           if (header) {
               const handleScroll = () => {
                   if (window.scrollY > 10) {
-                      header.classList.add('bg-gray-900/80', 'backdrop-blur-lg', 'shadow-xl');
+                      header.classList.add('bg-gray-900/80', 'backdrop-blur-lg', 'shadow-xl', 'header-solid');
                       header.classList.remove('bg-transparent');
                   } else {
-                      header.classList.remove('bg-gray-900/80', 'backdrop-blur-lg', 'shadow-xl');
+                      header.classList.remove('bg-gray-900/80', 'backdrop-blur-lg', 'shadow-xl', 'header-solid');
                       header.classList.add('bg-transparent');
                   }
               };
