@@ -79,35 +79,29 @@
       }
       .theme-toggle {
         position: relative;
-        width: 2.75rem;
-        height: 2.75rem;
-        border-radius: 9999px;
-        border: 1px solid rgba(245, 158, 11, 0.6);
-        background: radial-gradient(circle at 30% 30%, rgba(251, 191, 36, 0.2), rgba(17, 24, 39, 0.9));
+        width: 3rem;
+        height: 3rem;
+        border-radius: 14px;
+        border: 1px solid rgba(245, 158, 11, 0.4);
+        background: linear-gradient(145deg, rgba(17, 24, 39, 0.96), rgba(30, 41, 59, 0.92));
         display: inline-flex;
         align-items: center;
         justify-content: center;
         color: #f59e0b;
-        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.18);
-        transform: translateZ(0);
+        box-shadow: 0 8px 20px rgba(2, 6, 23, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);
       }
       .theme-toggle:hover {
-        transform: translateY(-1px) scale(1.03);
-        box-shadow: 0 10px 22px rgba(245, 158, 11, 0.28);
-      }
-      .theme-toggle:active {
-        transform: scale(0.97);
+        box-shadow: 0 12px 24px rgba(245, 158, 11, 0.22);
       }
       #theme-icon {
         display: inline-flex;
-        width: 1.05rem;
-        height: 1.05rem;
+        width: 1.2rem;
+        height: 1.2rem;
         line-height: 1;
       }
-      #theme-icon img {
+      #theme-icon svg {
         width: 100%;
         height: 100%;
-        object-fit: contain;
         display: block;
       }
       #main-header .logo-ko {
@@ -131,7 +125,7 @@
         color: #1e293b !important;
       }
       body.light-theme .theme-toggle {
-        background: radial-gradient(circle at 30% 30%, rgba(245, 158, 11, 0.32), rgba(255, 255, 255, 0.96));
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(241, 245, 249, 0.95));
         border-color: rgba(217, 119, 6, 0.5);
         box-shadow: 0 10px 20px rgba(217, 119, 6, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.7);
       }
@@ -155,14 +149,6 @@
         color: #0f172a !important;
       }
 
-      body.theme-switching,
-      body.theme-switching * {
-        transition-duration: 0.65s !important;
-        transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1) !important;
-      }
-      body.theme-switching #theme-toggle {
-        transform: rotate(180deg) scale(1.06);
-      }
       body.light-theme #fab-button {
         background-color: #f59e0b !important;
         color: #ffffff !important;
@@ -191,6 +177,19 @@
       body.light-theme #about p,
       body.light-theme #about li {
         color: #d1d5db !important;
+      }
+
+      .portfolio-card-image {
+        aspect-ratio: 16 / 10;
+        width: 100%;
+        object-fit: cover;
+      }
+      .portfolio-card {
+        background: linear-gradient(145deg, rgba(31, 41, 55, 0.96), rgba(17, 24, 39, 0.95));
+      }
+      .portfolio-chip {
+        background: rgba(245, 158, 11, 0.16);
+        border: 1px solid rgba(245, 158, 11, 0.35);
       }
     </style>
     <link rel="stylesheet" href="/index.css">
@@ -498,6 +497,60 @@
             </div>
         </section>
 
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-20 bg-gray-800/50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-extrabold text-white">Портфолио</h2>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Реальные объекты, которые мы построили в Улан-Удэ и регионе.</p>
+                </div>
+                <div class="swiper portfolio-slider relative group">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <article class="portfolio-card rounded-2xl border border-gray-700 overflow-hidden shadow-xl hover:shadow-amber-500/20 transition-all duration-300">
+                                <img src="/portfolio1.png" alt="Объект: Детский комплекс" loading="lazy" class="portfolio-card-image" />
+                                <div class="p-6 sm:p-8">
+                                    <div class="inline-flex items-center portfolio-chip rounded-full px-3 py-1 text-xs font-semibold text-amber-300 mb-4">Завершенный проект</div>
+                                    <h3 class="text-2xl font-bold text-white mb-4">Объект: Детский комплекс</h3>
+                                    <p class="text-gray-300 mb-2"><span class="text-gray-400">Время возведения:</span> 3 месяца</p>
+                                    <div class="flex items-center gap-3 mt-4">
+                                        <span class="text-gray-400">Уровень сложности:</span>
+                                        <div class="flex text-amber-400" aria-label="5 из 5">
+                                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="swiper-slide">
+                            <article class="portfolio-card rounded-2xl border border-gray-700 overflow-hidden shadow-xl hover:shadow-amber-500/20 transition-all duration-300">
+                                <img src="/portfolio2.png" alt="Объект: Дом 120 квадратных метров" loading="lazy" class="portfolio-card-image" />
+                                <div class="p-6 sm:p-8">
+                                    <div class="inline-flex items-center portfolio-chip rounded-full px-3 py-1 text-xs font-semibold text-amber-300 mb-4">Завершенный проект</div>
+                                    <h3 class="text-2xl font-bold text-white mb-4">Объект: Дом 120м²</h3>
+                                    <p class="text-gray-300 mb-2"><span class="text-gray-400">Время возведения:</span> 2 месяца</p>
+                                    <div class="flex items-center gap-3 mt-4">
+                                        <span class="text-gray-400">Уровень сложности:</span>
+                                        <div class="flex text-amber-400" aria-label="3 из 5">
+                                            <span>★</span><span>★</span><span>★</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="portfolio-pagination mt-6 relative !bottom-auto md:hidden"></div>
+                    <div class="portfolio-button-prev hidden md:flex items-center justify-center absolute top-1/2 left-0 transform -translate-y-1/2 w-12 h-12 bg-gray-800/60 rounded-full text-white cursor-pointer z-10 -ml-6 transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:ml-4 hover:bg-amber-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </div>
+                    <div class="portfolio-button-next hidden md:flex items-center justify-center absolute top-1/2 right-0 transform -translate-y-1/2 w-12 h-12 bg-gray-800/60 rounded-full text-white cursor-pointer z-10 -mr-6 transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:mr-4 hover:bg-amber-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
         <!-- Contact Section -->
         <section id="contact" class="py-20 bg-gray-900">
             <div class="container mx-auto px-6">
@@ -569,6 +622,7 @@
               <li><a href="#services" class="text-gray-400 hover:text-amber-500 transition-colors duration-300">Услуги</a></li>
               <li><a href="#about" class="text-gray-400 hover:text-amber-500 transition-colors duration-300">О нас</a></li>
               <li><a href="#testimonials" class="text-gray-400 hover:text-amber-500 transition-colors duration-300">Отзывы</a></li>
+              <li><a href="#portfolio" class="text-gray-400 hover:text-amber-500 transition-colors duration-300">Портфолио</a></li>
               <li><a href="#contact" class="text-gray-400 hover:text-amber-500 transition-colors duration-300">Контакты</a></li>
               <li><a href="portfolio.html" class="auth-link hidden text-gray-400 hover:text-amber-500 transition-colors duration-300">Портфолио</a></li>
             </ul>
@@ -678,18 +732,16 @@
           const themeToggle = document.getElementById('theme-toggle');
           const themeIcon = document.getElementById('theme-icon');
           const themeStorageKey = 'siteTheme';
-          const lightThemeIcon = 'https://cdn-icons-png.flaticon.com/512/566/566410.png';
-          const darkThemeIcon = 'https://cdn-icons-png.flaticon.com/512/566/566461.png';
+          const lightThemeIcon = '<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 18a6 6 0 100-12 6 6 0 000 12zm0 4a1 1 0 011 1v0a1 1 0 11-2 0v0a1 1 0 011-1zm0-20a1 1 0 011-1v0a1 1 0 11-2 0v0a1 1 0 011-1zm10 10a1 1 0 010 2h0a1 1 0 110-2h0zM2 12a1 1 0 010 2h0a1 1 0 110-2h0zm16.95 6.536a1 1 0 011.414 0h0a1 1 0 01-1.414 1.414h0a1 1 0 010-1.414zM3.636 5.05a1 1 0 011.414 0h0A1 1 0 113.636 6.464h0a1 1 0 010-1.414zm15.314-1.414a1 1 0 011.414 1.414h0a1 1 0 01-1.414-1.414zM3.636 17.536a1 1 0 011.414 1.414h0a1 1 0 01-1.414-1.414z"/></svg>';
+          const darkThemeIcon = '<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M21 14.5A9 9 0 119.5 3 7 7 0 0021 14.5z"/></svg>';
 
           const setTheme = (theme) => {
               const isLightTheme = theme === 'light';
-              document.body.classList.add('theme-switching');
               document.body.classList.toggle('light-theme', isLightTheme);
               if (themeIcon) {
-                  themeIcon.innerHTML = `<img src="${isLightTheme ? lightThemeIcon : darkThemeIcon}" alt="Иконка темы">`;
+                  themeIcon.innerHTML = isLightTheme ? lightThemeIcon : darkThemeIcon;
               }
               localStorage.setItem(themeStorageKey, isLightTheme ? 'light' : 'dark');
-              window.setTimeout(() => document.body.classList.remove('theme-switching'), 700);
           };
 
           setTheme(localStorage.getItem(themeStorageKey) || 'dark');
@@ -871,12 +923,12 @@
                   spaceBetween: 20,
                   autoHeight: true,
                   pagination: {
-                      el: '.swiper-pagination',
+                      el: '.testimonials-slider .swiper-pagination',
                       clickable: true,
                   },
                   navigation: {
-                      nextEl: '.swiper-button-next',
-                      prevEl: '.swiper-button-prev',
+                      nextEl: '.testimonials-slider .swiper-button-next',
+                      prevEl: '.testimonials-slider .swiper-button-prev',
                   },
                   breakpoints: {
                       768: {
@@ -885,6 +937,28 @@
                           autoHeight: false,
                       },
                       1024: {
+                          slidesPerView: 2,
+                          spaceBetween: 30,
+                          autoHeight: false,
+                      }
+                  }
+              });
+
+              const portfolioSlider = new Swiper('.portfolio-slider', {
+                  loop: true,
+                  grabCursor: true,
+                  spaceBetween: 20,
+                  autoHeight: true,
+                  pagination: {
+                      el: '.portfolio-pagination',
+                      clickable: true,
+                  },
+                  navigation: {
+                      nextEl: '.portfolio-button-next',
+                      prevEl: '.portfolio-button-prev',
+                  },
+                  breakpoints: {
+                      768: {
                           slidesPerView: 2,
                           spaceBetween: 30,
                           autoHeight: false,
