@@ -8,7 +8,7 @@
     <meta name="description" content="Профессиональная строительная бригада 'БИКО' в Улан-Удэ. Строительство домов, гаражей, ремонт квартир под ключ. Скидки до 50% на объем! Гарантия качества. Закажите бесплатный расчет стоимости.">
     <meta name="keywords" content="строительная компания улан-удэ, бригада строителей, строители, отделочники, ремонт дома, ремонт квартиры, ремонт квартиры в новостройке, строительство домов, строительство гаражей, демонтаж, бико улан-удэ">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="preload" as="image" href="/bgbico.webp" fetchpriority="high" />
     <style>
       html {
         scroll-behavior: smooth;
@@ -38,16 +38,8 @@
       header,
       section,
       footer,
-      div,
       nav,
       a,
-      h1,
-      h2,
-      h3,
-      h4,
-      p,
-      span,
-      li,
       button {
         transition: background-color 0.45s ease, color 0.45s ease, border-color 0.45s ease;
       }
@@ -193,7 +185,6 @@
         color: #d1d5db !important;
       }
     </style>
-    <link rel="stylesheet" href="/index.css">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -273,7 +264,14 @@
     <main>
         <!-- Hero Section -->
         <section id="hero" class="relative h-[60vh] flex items-end justify-center text-center text-white overflow-hidden pb-12 md:pb-20">
-            <div class="absolute top-0 left-4 right-4 bottom-0 rounded-b-2xl bg-cover bg-center bg-no-repeat" style="background-image: url('https://rrezerv.ru/testbc/bgbico.webp')"></div>
+            <img
+                src="/bgbico.webp"
+                alt="Строительный объект в Улан-Удэ"
+                class="absolute top-0 left-4 right-4 bottom-0 rounded-b-2xl w-[calc(100%-2rem)] h-full object-cover"
+                fetchpriority="high"
+                loading="eager"
+                decoding="async"
+            />
             <div class="absolute top-0 left-4 right-4 bottom-0 rounded-b-2xl bg-black bg-opacity-60"></div>
             <div class="relative z-10 p-6">
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 drop-shadow-lg">
@@ -644,9 +642,74 @@
         </button>
     </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
+          const loadSwiperAssets = () => {
+              if (window.Swiper) {
+                  return Promise.resolve();
+              }
+
+              return new Promise((resolve, reject) => {
+                  if (!document.querySelector('link[data-swiper-styles]')) {
+                      const swiperStyles = document.createElement('link');
+                      swiperStyles.rel = 'stylesheet';
+                      swiperStyles.href = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css';
+                      swiperStyles.setAttribute('data-swiper-styles', 'true');
+                      document.head.appendChild(swiperStyles);
+                  }
+
+                  const existingSwiperScript = document.querySelector('script[data-swiper-script]');
+                  if (existingSwiperScript) {
+                      existingSwiperScript.addEventListener('load', () => resolve(), { once: true });
+                      existingSwiperScript.addEventListener('error', reject, { once: true });
+                      return;
+                  }
+
+                  const swiperScript = document.createElement('script');
+                  swiperScript.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
+                  swiperScript.defer = true;
+                  swiperScript.setAttribute('data-swiper-script', 'true');
+                  swiperScript.onload = () => resolve();
+                  swiperScript.onerror = reject;
+                  document.body.appendChild(swiperScript);
+              });
+          };
+
+          const initTestimonialsSlider = async () => {
+              try {
+                  await loadSwiperAssets();
+                  if (typeof Swiper === 'undefined') return;
+
+                  new Swiper('.testimonials-slider', {
+                      loop: true,
+                      grabCursor: true,
+                      spaceBetween: 20,
+                      autoHeight: true,
+                      pagination: {
+                          el: '.swiper-pagination',
+                          clickable: true,
+                      },
+                      navigation: {
+                          nextEl: '.swiper-button-next',
+                          prevEl: '.swiper-button-prev',
+                      },
+                      breakpoints: {
+                          768: {
+                              slidesPerView: 2,
+                              spaceBetween: 30,
+                              autoHeight: false,
+                          },
+                          1024: {
+                              slidesPerView: 2,
+                              spaceBetween: 30,
+                              autoHeight: false,
+                          }
+                      }
+                  });
+              } catch (error) {
+                  console.error('Не удалось загрузить слайдер отзывов', error);
+              }
+          };
           // --- Auth UI Logic ---
           const handleAuthUI = () => {
               const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
@@ -678,15 +741,15 @@
           const themeToggle = document.getElementById('theme-toggle');
           const themeIcon = document.getElementById('theme-icon');
           const themeStorageKey = 'siteTheme';
-          const lightThemeIcon = 'https://cdn-icons-png.flaticon.com/512/566/566410.png';
-          const darkThemeIcon = 'https://cdn-icons-png.flaticon.com/512/566/566461.png';
+          const lightThemeIcon = '☀️';
+          const darkThemeIcon = '🌙';
 
           const setTheme = (theme) => {
               const isLightTheme = theme === 'light';
               document.body.classList.add('theme-switching');
               document.body.classList.toggle('light-theme', isLightTheme);
               if (themeIcon) {
-                  themeIcon.innerHTML = `<img src="${isLightTheme ? lightThemeIcon : darkThemeIcon}" alt="Иконка темы">`;
+                  themeIcon.textContent = isLightTheme ? lightThemeIcon : darkThemeIcon;
               }
               localStorage.setItem(themeStorageKey, isLightTheme ? 'light' : 'dark');
               window.setTimeout(() => document.body.classList.remove('theme-switching'), 700);
@@ -713,7 +776,7 @@
                       header.classList.add('bg-transparent');
                   }
               };
-              window.addEventListener('scroll', handleScroll);
+              window.addEventListener('scroll', handleScroll, { passive: true });
               handleScroll();
           }
 
@@ -864,36 +927,22 @@
           }
 
           // --- Testimonials Slider ---
-          if (typeof Swiper !== 'undefined') {
-              const testimonialsSlider = new Swiper('.testimonials-slider', {
-                  loop: true,
-                  grabCursor: true,
-                  spaceBetween: 20,
-                  autoHeight: true,
-                  pagination: {
-                      el: '.swiper-pagination',
-                      clickable: true,
-                  },
-                  navigation: {
-                      nextEl: '.swiper-button-next',
-                      prevEl: '.swiper-button-prev',
-                  },
-                  breakpoints: {
-                      768: {
-                          slidesPerView: 2,
-                          spaceBetween: 30,
-                          autoHeight: false,
-                      },
-                      1024: {
-                          slidesPerView: 2,
-                          spaceBetween: 30,
-                          autoHeight: false,
+          const testimonialsSection = document.getElementById('testimonials');
+          if (testimonialsSection && 'IntersectionObserver' in window) {
+              const sliderObserver = new IntersectionObserver((entries, observer) => {
+                  entries.forEach((entry) => {
+                      if (entry.isIntersecting) {
+                          initTestimonialsSlider();
+                          observer.disconnect();
                       }
-                  }
-              });
+                  });
+              }, { rootMargin: '200px 0px' });
+
+              sliderObserver.observe(testimonialsSection);
+          } else {
+              initTestimonialsSlider();
           }
       });
     </script>
-  <script type="module" src="/index.tsx"></script>
 </body>
 </html>
