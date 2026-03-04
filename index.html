@@ -7,8 +7,8 @@
     <title>Строительная компания БИКО в Улан-Удэ - Строительство домов, ремонт квартир</title>
     <meta name="description" content="Профессиональная строительная бригада 'БИКО' в Улан-Удэ. Строительство домов, гаражей, ремонт квартир под ключ. Скидки до 50% на объем! Гарантия качества. Закажите бесплатный расчет стоимости.">
     <meta name="keywords" content="строительная компания улан-удэ, бригада строителей, строители, отделочники, ремонт дома, ремонт квартиры, ремонт квартиры в новостройке, строительство домов, строительство гаражей, демонтаж, бико улан-удэ">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script defer src="https://cdn.tailwindcss.com"></script>
+    <link rel="preload" as="image" href="/bgbico.webp" fetchpriority="high" />
     <style>
       html {
         scroll-behavior: smooth;
@@ -38,18 +38,9 @@
       header,
       section,
       footer,
-      div,
-      nav,
-      a,
-      h1,
-      h2,
-      h3,
-      h4,
-      p,
-      span,
-      li,
-      button {
-        transition: background-color 0.45s ease, color 0.45s ease, border-color 0.45s ease;
+      button,
+      a {
+        transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
       }
       body.light-theme {
         background-color: #f8fafc !important;
@@ -79,35 +70,29 @@
       }
       .theme-toggle {
         position: relative;
-        width: 2.75rem;
-        height: 2.75rem;
-        border-radius: 9999px;
-        border: 1px solid rgba(245, 158, 11, 0.6);
-        background: radial-gradient(circle at 30% 30%, rgba(251, 191, 36, 0.2), rgba(17, 24, 39, 0.9));
+        width: 3rem;
+        height: 3rem;
+        border-radius: 14px;
+        border: 1px solid rgba(245, 158, 11, 0.4);
+        background: linear-gradient(145deg, rgba(17, 24, 39, 0.96), rgba(30, 41, 59, 0.92));
         display: inline-flex;
         align-items: center;
         justify-content: center;
         color: #f59e0b;
-        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.18);
-        transform: translateZ(0);
+        box-shadow: 0 8px 20px rgba(2, 6, 23, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);
       }
       .theme-toggle:hover {
-        transform: translateY(-1px) scale(1.03);
-        box-shadow: 0 10px 22px rgba(245, 158, 11, 0.28);
-      }
-      .theme-toggle:active {
-        transform: scale(0.97);
+        box-shadow: 0 12px 24px rgba(245, 158, 11, 0.22);
       }
       #theme-icon {
         display: inline-flex;
-        width: 1.05rem;
-        height: 1.05rem;
+        width: 1.2rem;
+        height: 1.2rem;
         line-height: 1;
       }
-      #theme-icon img {
+      #theme-icon svg {
         width: 100%;
         height: 100%;
-        object-fit: contain;
         display: block;
       }
       #main-header .logo-ko {
@@ -131,7 +116,7 @@
         color: #1e293b !important;
       }
       body.light-theme .theme-toggle {
-        background: radial-gradient(circle at 30% 30%, rgba(245, 158, 11, 0.32), rgba(255, 255, 255, 0.96));
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(241, 245, 249, 0.95));
         border-color: rgba(217, 119, 6, 0.5);
         box-shadow: 0 10px 20px rgba(217, 119, 6, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.7);
       }
@@ -155,13 +140,20 @@
         color: #0f172a !important;
       }
 
-      body.theme-switching,
-      body.theme-switching * {
-        transition-duration: 0.65s !important;
-        transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1) !important;
+      .testimonials-slider .swiper-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
       }
-      body.theme-switching #theme-toggle {
-        transform: rotate(180deg) scale(1.06);
+      @media (min-width: 768px) {
+        .testimonials-slider .swiper-wrapper {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      .testimonials-slider .swiper-pagination,
+      .testimonials-slider .swiper-button-next,
+      .testimonials-slider .swiper-button-prev {
+        display: none !important;
       }
       body.light-theme #fab-button {
         background-color: #f59e0b !important;
@@ -273,7 +265,7 @@
     <main>
         <!-- Hero Section -->
         <section id="hero" class="relative h-[60vh] flex items-end justify-center text-center text-white overflow-hidden pb-12 md:pb-20">
-            <div class="absolute top-0 left-4 right-4 bottom-0 rounded-b-2xl bg-cover bg-center bg-no-repeat" style="background-image: url('https://rrezerv.ru/testbc/bgbico.webp')"></div>
+            <div class="absolute top-0 left-4 right-4 bottom-0 rounded-b-2xl bg-cover bg-center bg-no-repeat" style="background-image: url('/bgbico.webp')"></div>
             <div class="absolute top-0 left-4 right-4 bottom-0 rounded-b-2xl bg-black bg-opacity-60"></div>
             <div class="relative z-10 p-6">
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 drop-shadow-lg">
@@ -644,7 +636,6 @@
         </button>
     </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
           // --- Auth UI Logic ---
@@ -678,18 +669,16 @@
           const themeToggle = document.getElementById('theme-toggle');
           const themeIcon = document.getElementById('theme-icon');
           const themeStorageKey = 'siteTheme';
-          const lightThemeIcon = 'https://cdn-icons-png.flaticon.com/512/566/566410.png';
-          const darkThemeIcon = 'https://cdn-icons-png.flaticon.com/512/566/566461.png';
+          const lightThemeIcon = '<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 18a6 6 0 100-12 6 6 0 000 12zm0 4a1 1 0 011 1v0a1 1 0 11-2 0v0a1 1 0 011-1zm0-20a1 1 0 011-1v0a1 1 0 11-2 0v0a1 1 0 011-1zm10 10a1 1 0 010 2h0a1 1 0 110-2h0zM2 12a1 1 0 010 2h0a1 1 0 110-2h0zm16.95 6.536a1 1 0 011.414 0h0a1 1 0 01-1.414 1.414h0a1 1 0 010-1.414zM3.636 5.05a1 1 0 011.414 0h0A1 1 0 113.636 6.464h0a1 1 0 010-1.414zm15.314-1.414a1 1 0 011.414 1.414h0a1 1 0 01-1.414-1.414zM3.636 17.536a1 1 0 011.414 1.414h0a1 1 0 01-1.414-1.414z"/></svg>';
+          const darkThemeIcon = '<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M21 14.5A9 9 0 119.5 3 7 7 0 0021 14.5z"/></svg>';
 
           const setTheme = (theme) => {
               const isLightTheme = theme === 'light';
-              document.body.classList.add('theme-switching');
               document.body.classList.toggle('light-theme', isLightTheme);
               if (themeIcon) {
-                  themeIcon.innerHTML = `<img src="${isLightTheme ? lightThemeIcon : darkThemeIcon}" alt="Иконка темы">`;
+                  themeIcon.innerHTML = isLightTheme ? lightThemeIcon : darkThemeIcon;
               }
               localStorage.setItem(themeStorageKey, isLightTheme ? 'light' : 'dark');
-              window.setTimeout(() => document.body.classList.remove('theme-switching'), 700);
           };
 
           setTheme(localStorage.getItem(themeStorageKey) || 'dark');
@@ -863,35 +852,6 @@
               yearSpan.textContent = new Date().getFullYear();
           }
 
-          // --- Testimonials Slider ---
-          if (typeof Swiper !== 'undefined') {
-              const testimonialsSlider = new Swiper('.testimonials-slider', {
-                  loop: true,
-                  grabCursor: true,
-                  spaceBetween: 20,
-                  autoHeight: true,
-                  pagination: {
-                      el: '.swiper-pagination',
-                      clickable: true,
-                  },
-                  navigation: {
-                      nextEl: '.swiper-button-next',
-                      prevEl: '.swiper-button-prev',
-                  },
-                  breakpoints: {
-                      768: {
-                          slidesPerView: 2,
-                          spaceBetween: 30,
-                          autoHeight: false,
-                      },
-                      1024: {
-                          slidesPerView: 2,
-                          spaceBetween: 30,
-                          autoHeight: false,
-                      }
-                  }
-              });
-          }
       });
     </script>
   <script type="module" src="/index.tsx"></script>
