@@ -584,7 +584,7 @@
                                     id="send-button"
                                     type="submit"
                                     value="Отправить"
-                                    class="w-full inline-flex items-center justify-center gap-2 px-7 py-3 font-semibold text-white rounded-xl text-base transition-all duration-300 ease-in-out cursor-pointer bg-gradient-to-r from-amber-600 to-amber-500 shadow-lg shadow-amber-500/20 hover:shadow-xl hover:shadow-amber-500/30 hover:-translate-y-1 success:bg-green-600 success:shadow-green-500/20 success:hover:shadow-green-500/30"
+                                    class="w-full inline-flex items-center justify-center gap-2 px-7 py-3 font-semibold text-white rounded-xl text-base transition-all duration-300 ease-in-out cursor-pointer bg-gradient-to-r from-amber-600 to-amber-500 shadow-lg shadow-amber-500/20 hover:shadow-xl hover:shadow-amber-500/30 hover:-translate-y-1"
                                 />
                             </div>
                             <p id="form-error-message" class="text-red-500 text-sm text-center hidden"></p>
@@ -852,8 +852,9 @@
                       const result = await response.json();
 
                       if (result.success) {
-                          submitButton.value = 'Мы вам скоро перезвоним!';
-                          submitButton.classList.add('success');
+                          submitButton.value = 'Мы вам перезвоним!';
+                          submitButton.classList.remove('from-amber-600', 'to-amber-500', 'shadow-amber-500/20', 'hover:shadow-amber-500/30');
+                          submitButton.classList.add('bg-green-600', 'hover:bg-green-700', 'shadow-green-500/20', 'hover:shadow-green-500/30');
                           submitButton.classList.remove('opacity-70', 'cursor-wait');
                           submitButton.disabled = true;
                           phoneInput.disabled = true;
